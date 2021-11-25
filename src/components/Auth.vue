@@ -143,7 +143,7 @@
             </button>
           </vee-form>
           <!-- Registration Form -->
-          <vee-form v-show="tab === 'register'">
+          <vee-form v-show="tab === 'register'" :validation-schema="schema">
             <!-- Name -->
             <div class="mb-3">
               <label class="inline-block mb-2">Name</label>
@@ -164,6 +164,7 @@
                 "
                 placeholder="Enter Name"
               />
+              <ErrorMessage class="text-red-600" name="name" />
             </div>
             <!-- Email -->
             <div class="mb-3">
@@ -305,6 +306,15 @@ export default {
   data() {
     return {
       tab: 'login',
+      schema: {
+        name: 'required',
+        email: '',
+        age: '',
+        password: '',
+        confirm_passwprd: '',
+        country: '',
+        tos: '',
+      },
     };
   },
   computed: {
